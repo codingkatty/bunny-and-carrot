@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbc05adyipbf8"]
+
+[ext_resource type="Texture2D" uid="uid://bh5ulpfemvltf" path="res://assets/heart.png" id="1_al8hk"]
+[ext_resource type="Script" uid="uid://rbg1ovm88ucr" path="res://scripts/heart.gd" id="2_0mqtf"]
+
+[node name="heart" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_al8hk")
+script = ExtResource("2_0mqtf")

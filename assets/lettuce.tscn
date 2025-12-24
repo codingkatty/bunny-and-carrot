@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4lrfo713mra1"]
+
+[ext_resource type="Script" uid="uid://b0kyff8fkem2p" path="res://scripts/lettuce.gd" id="1_hn7t8"]
+[ext_resource type="Texture2D" uid="uid://dpagpo2wqih4k" path="res://assets/lettuce.png" id="2_hn7t8"]
+[ext_resource type="FontFile" uid="uid://7piuk2g3tqri" path="res://assets/FuzzyBubbles-Regular.ttf" id="3_kwqjv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5py2r"]
+size = Vector2(177.5, 180)
+
+[sub_resource type="Curve" id="Curve_v2q7n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0898877), -1.78615, 0.0, 0, 0]
+point_count = 2
+
+[node name="lettuce" type="Area2D" groups=["carrot"]]
+script = ExtResource("1_hn7t8")
+
+[node name="lettuce" type="Sprite2D" parent="."]
+position = Vector2(-19, 23)
+scale = Vector2(0.2105, 0.2105)
+texture = ExtResource("2_hn7t8")
+offset = Vector2(90.2613, -109.264)
+
+[node name="label" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -30.0
+offset_right = 46.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.239216, 0.219608, 0.211765, 1)
+theme_override_fonts/normal_font = ExtResource("3_kwqjv")
+theme_override_font_sizes/normal_font_size = 80
+text = "ab"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.25, 0)
+shape = SubResource("RectangleShape2D_5py2r")
+
+[node name="particle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 30.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_v2q7n")
+color = Color(0.603922, 0.792157, 0.298039, 1)
+
+[connection signal="finished" from="particle" to="." method="_on_particle_finished"]
