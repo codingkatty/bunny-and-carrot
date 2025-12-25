@@ -1,0 +1,296 @@
+[gd_scene load_steps=29 format=3 uid="uid://cwbpakav8uwj"]
+
+[ext_resource type="Texture2D" uid="uid://d1tsn187a0s7c" path="res://assets/title.png" id="1_wrlrt"]
+[ext_resource type="Script" uid="uid://klv1i87o2eu2" path="res://scripts/score.gd" id="2_6tafp"]
+[ext_resource type="FontFile" uid="uid://7piuk2g3tqri" path="res://assets/FuzzyBubbles-Regular.ttf" id="2_gm2es"]
+[ext_resource type="Script" uid="uid://pqoptl0bysyi" path="res://scripts/start.gd" id="3_6tafp"]
+[ext_resource type="Texture2D" uid="uid://cdbf4j8ktxpci" path="res://assets/Stompy/Stompy-1.png" id="4_0rapm"]
+[ext_resource type="Texture2D" uid="uid://cs88e57gr7ke8" path="res://assets/Stompy/Stompy-2.png" id="5_xbbny"]
+[ext_resource type="Texture2D" uid="uid://bbonb4n6y7r5v" path="res://assets/Stompy/Stompy-3.png" id="6_l3jns"]
+[ext_resource type="Texture2D" uid="uid://uuiyor4twolw" path="res://assets/Stompy/Stompy-4.png" id="7_afbui"]
+[ext_resource type="Texture2D" uid="uid://bo1ysrr7jvbqn" path="res://assets/Stompy/Stompy-5.png" id="8_5s6gi"]
+[ext_resource type="Texture2D" uid="uid://d0i1exjt7l5gu" path="res://assets/Stompy-mouth/Stompy-mouth-1.png" id="9_6krcv"]
+[ext_resource type="Texture2D" uid="uid://b5q6m3n0nd5wm" path="res://assets/Stompy-mouth/Stompy-mouth-2.png" id="10_p8fx1"]
+[ext_resource type="Texture2D" uid="uid://ddl2wod0ohacy" path="res://assets/Stompy-mouth/Stompy-mouth-3.png" id="11_1yje0"]
+[ext_resource type="Texture2D" uid="uid://c6rgjkcu3o2wc" path="res://assets/Stompy-mouth/Stompy-mouth-4.png" id="12_858ge"]
+[ext_resource type="Texture2D" uid="uid://bvo8vvb852ofb" path="res://assets/Stompy-mouth/Stompy-mouth-5.png" id="13_loajq"]
+[ext_resource type="Texture2D" uid="uid://bosrygwr57i7v" path="res://assets/Scenery/Scenery-1.png" id="14_7il6q"]
+[ext_resource type="Texture2D" uid="uid://backhwwcsvqnw" path="res://assets/heartbreak.png" id="14_gm2es"]
+[ext_resource type="Texture2D" uid="uid://camqmt1uex3ju" path="res://assets/Scenery/Scenery-2.png" id="15_s1rt4"]
+[ext_resource type="Texture2D" uid="uid://cfeq1m4p70utp" path="res://assets/Scenery/Scenery-3.png" id="16_yqdrn"]
+[ext_resource type="AudioStream" uid="uid://v6tewk5sam5a" path="res://assets/carrots.wav" id="17_c5m3e"]
+
+[sub_resource type="FontVariation" id="FontVariation_gm2es"]
+base_font = ExtResource("2_gm2es")
+variation_embolden = 1.59
+
+[sub_resource type="Animation" id="Animation_mxgkd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1168, 671)]
+}
+
+[sub_resource type="Animation" id="Animation_3dmrc"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(1104, 671), Vector2(73, 671)]
+}
+
+[sub_resource type="Animation" id="Animation_g6gyw"]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(77, 671), Vector2(1168, 671)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3dmrc"]
+_data = {
+&"RESET": SubResource("Animation_mxgkd"),
+&"in": SubResource("Animation_3dmrc"),
+&"out": SubResource("Animation_g6gyw")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bt5mj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0rapm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xbbny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l3jns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_afbui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5s6gi")
+}],
+"loop": true,
+"name": &"stomp",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6krcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_p8fx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1yje0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_858ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_loajq")
+}],
+"loop": true,
+"name": &"stomp-eat",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_trtic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kvuet"]
+resource_name = "cam_bop"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ir15t"]
+_data = {
+&"RESET": SubResource("Animation_trtic"),
+&"cam_bop": SubResource("Animation_kvuet")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.130208
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.0
+offset_top = -199.0
+offset_right = 283.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.894118, 0.74902, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect3"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 452.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0.223529, 0.203922, 0.196078, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_gm2es")
+theme_override_font_sizes/normal_font_size = 80
+text = "00000"
+script = ExtResource("2_6tafp")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 680.0
+offset_top = 491.0
+offset_right = 1561.0
+offset_bottom = 912.0
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("1_wrlrt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 329.0
+offset_top = 81.0
+offset_right = 529.0
+offset_bottom = 245.0
+theme_override_colors/default_color = Color(0.309804, 0.690196, 0.584314, 1)
+theme_override_fonts/normal_font = ExtResource("2_gm2es")
+theme_override_font_sizes/normal_font_size = 36
+text = "score"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 179.0
+offset_top = 315.0
+offset_right = 379.0
+offset_bottom = 479.0
+theme_override_colors/default_color = Color(0.309804, 0.690196, 0.584314, 1)
+theme_override_fonts/normal_font = ExtResource("2_gm2es")
+theme_override_font_sizes/normal_font_size = 36
+text = "press any key to restart"
+
+[node name="transition" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1168.0
+offset_bottom = 671.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_6tafp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_3dmrc")
+}
+autoplay = "in"
+
+[node name="stompy" type="AnimatedSprite2D" parent="."]
+position = Vector2(-14.9999, 101)
+scale = Vector2(0.316102, 0.316102)
+sprite_frames = SubResource("SpriteFrames_bt5mj")
+animation = &"stomp-eat"
+autoplay = "stomp"
+
+[node name="Heartbreak" type="Sprite2D" parent="stompy"]
+position = Vector2(892.117, -155.013)
+scale = Vector2(0.281555, 0.281555)
+texture = ExtResource("14_gm2es")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ir15t")
+}
+autoplay = "cam_bop"
+blend_times = [&"cam_bop", &"cam_bop", 0.2]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+
+[node name="Scenery-1" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(26, -29.5)
+scale = Vector2(0.57105, 0.456317)
+texture = ExtResource("14_7il6q")
+
+[node name="background" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(0, 40)
+
+[node name="mountains" type="Sprite2D" parent="ParallaxBackground/background"]
+position = Vector2(-3, -25)
+scale = Vector2(0.500993, 0.500993)
+texture = ExtResource("15_s1rt4")
+
+[node name="foreground" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="ground" type="Sprite2D" parent="ParallaxBackground/foreground"]
+position = Vector2(2, -56)
+scale = Vector2(0.522849, 0.522849)
+texture = ExtResource("16_yqdrn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_c5m3e")
+autoplay = true
+
+[connection signal="animation_finished" from="CanvasLayer/transition/AnimationPlayer" to="CanvasLayer/transition" method="_on_animation_finished"]

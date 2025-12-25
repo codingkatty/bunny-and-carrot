@@ -3,15 +3,17 @@ extends Area2D
 var rng = RandomNumberGenerator.new()
 var letter = ''
 var speed = 100
+var is_scored = false
 
 func _input(event) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode >= KEY_A and event.keycode <= KEY_Z:
 			var input_letter = char(event.keycode).to_lower()
-			if input_letter == letter:
-				Utils.carrot_collected.emit()
+			if input_letter == letter and not is_scored:
 				Utils.score += 1
+				Utils.carrot_collected.emit()
 				particle_start()
+				is_scored = true
 
 func _ready() -> void:
 	scale = Vector2.ONE * rng.randf_range(0.5, 0.9)

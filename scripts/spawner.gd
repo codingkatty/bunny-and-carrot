@@ -45,7 +45,7 @@ func _on_timer_timeout() -> void:
 		instance.get_node("label").text = instance.letters[0] + instance.letters[1]
 		instance.position = position
 
-	timer.start(rng.randf_range(0.4, 0.8))
+	timer.start(rng.randf_range(0.3, 0.6))
 
 func _on_rabbit_timer_timeout() -> void:
 	var crnt_frame = stompy.frame

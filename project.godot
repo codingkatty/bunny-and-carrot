@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="bunny and carrot"
-run/main_scene="uid://bkou4cmm7nyy4"
+run/main_scene="uid://cu4uqulsyrjr5"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(0.827451, 0.976471, 1, 1)
+boot_splash/image="uid://c76te5lkix1hc"
 config/icon="res://icon.svg"
 
 [autoload]

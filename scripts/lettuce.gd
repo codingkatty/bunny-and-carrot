@@ -4,16 +4,18 @@ var rng = RandomNumberGenerator.new()
 var letters = ['', '']
 var crnt_letter = 0
 var speed = 100
+var is_scored = false
 
 func _input(event) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode >= KEY_A and event.keycode <= KEY_Z:
 			var input_letter = char(event.keycode).to_lower()
-			if input_letter == letters[crnt_letter]:
+			if input_letter == letters[crnt_letter] and not is_scored:
 				if crnt_letter == letters.size() - 1:
-					Utils.carrot_collected.emit()
 					Utils.score += 2
+					Utils.carrot_collected.emit()
 					particle_start()
+					is_scored = true
 					return
 				else:
 					crnt_letter += 1

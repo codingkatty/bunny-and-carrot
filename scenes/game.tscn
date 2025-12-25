@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkou4cmm7nyy4"]
+[gd_scene load_steps=30 format=3 uid="uid://bkou4cmm7nyy4"]
 
 [ext_resource type="PackedScene" uid="uid://bbc05adyipbf8" path="res://assets/heart.tscn" id="1_rysoc"]
 [ext_resource type="Texture2D" uid="uid://bosrygwr57i7v" path="res://assets/Scenery/Scenery-1.png" id="1_uwrxv"]
@@ -20,6 +20,58 @@
 [ext_resource type="Script" uid="uid://bluupc2hixbnu" path="res://scripts/delete.gd" id="15_ir15t"]
 [ext_resource type="AudioStream" uid="uid://v6tewk5sam5a" path="res://assets/carrots.wav" id="18_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://cmgkgefedxrxd" path="res://assets/imact_rock.mp3" id="19_264po"]
+
+[sub_resource type="Animation" id="Animation_mxgkd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1168, 671)]
+}
+
+[sub_resource type="Animation" id="Animation_3dmrc"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(1104, 671), Vector2(73, 671)]
+}
+
+[sub_resource type="Animation" id="Animation_g6gyw"]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.1),
+"update": 0,
+"values": [Vector2(77, 671), Vector2(1168, 671)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3dmrc"]
+_data = {
+&"RESET": SubResource("Animation_mxgkd"),
+&"in": SubResource("Animation_3dmrc"),
+&"out": SubResource("Animation_g6gyw")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bt5mj"]
 animations = [{
@@ -168,6 +220,17 @@ offset_right = 1173.0
 offset_bottom = 668.0
 color = Color(1, 0.443137, 0.376471, 0.2)
 
+[node name="transition" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1168.0
+offset_bottom = 671.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_3dmrc")
+}
+autoplay = "in"
+
 [node name="stompy" type="AnimatedSprite2D" parent="."]
 position = Vector2(-14.9999, 101)
 scale = Vector2(0.316102, 0.316102)
@@ -253,6 +316,7 @@ max_polyphony = 20
 stream = ExtResource("19_264po")
 max_polyphony = 20
 
+[connection signal="animation_finished" from="CanvasLayer/transition/AnimationPlayer" to="delete" method="_on_animation_finished"]
 [connection signal="timeout" from="spawn_timer" to="spawner" method="_on_timer_timeout"]
 [connection signal="area_entered" from="delete" to="delete" method="_on_area_entered"]
 [connection signal="timeout" from="rabbit_timer" to="Camera2D" method="_on_rabbit_timer_timeout"]
